@@ -29,10 +29,20 @@ int main()
         // Write an action using cout. DON'T FORGET THE "<< endl"
         // To debug: cerr << "Debug messages..." << endl;
 
+        //the final thrust value
+        int finalThrust;
+        
+        //don't accelerate when we're facing away from the next checkpoint
+        //this helps us turn faster 
+        if (nextCheckpointAngle < -90 || 
+            nextCheckpointAngle > 90) 
+            finalThrust = 0;
+        else 
+            finalThrust = 100;
 
         // You have to output the target position
         // followed by the power (0 <= thrust <= 100)
         // i.e.: "x y thrust"
-        cout << nextCheckpointX << " " << nextCheckpointY << " 80" << endl;
+        cout << nextCheckpointX << " " << nextCheckpointY << " " << finalThrust << endl;
     }
 }
